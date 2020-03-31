@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Parti index{% endblock %}
+
+{% block body %}
+    <h1>Parti index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Moyenne d'age</th>
+                <th>parité</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for parti in partis %}
+            <tr>
+                <td>{{ parti.id }}</td>
+                <td>{{ parti.nom }}</td>
+                <td>{{ parti.getMoyenneAge() }} ans</td>
+                <td>
+                    <div id="pretty-parite">
+                        <h6 class='parite'>M</h6>
+                        <div id="container-parite">
+                            {% set width =  parti.getParite()['M'] %}
+                            {{ ('<div id="parite" style="width:' ~ width|default('0')~'%"' ~ ' !important;">') | raw }}
+                
+
+
+                                {{ parti.getParite()['M']}}%
+                            </div>
+                        </div>
+                        <h6 class='parite'>F</h6>
+                    </div>
+
+                </td>
+                <td>
+                    <a href="{{ path('parti_show', {'id': parti.id}) }}">show</a>
+                    <a href="{{ path('parti_edit', {'id': parti.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('parti_new') }}">Create new</a>
+{% endblock %}

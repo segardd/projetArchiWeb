@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <meta charset="UTF-8">
+        
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+		{% block stylesheets %}
+			{# 'app' must match the first argument to addEntry() in webpack.config.js #}
+			{{ encore_entry_link_tags('app') }}
+
+			<!-- Renders a link tag (if your module requires any CSS)
+			                 <link rel="stylesheet" href="/build/app.css"> -->
+		{% endblock %}
+		<title>
+			{% block title %}Welcome!
+			{% endblock %}
+		</title>
+		
+	</head>
+	<body>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+
+		<header>
+			<div id="header">
+				<a href="{{ path("index") }}"><img id="logo" src="../img/Logo.png" alt=""></a>
+				<div>
+				<ul class="header">
+					<a href="./politicien"><li>Politicien</li></a>
+					<a href="./affaire"><li>Affaire</li></a>
+					<a href="./mairie"><li>Mairie</li></a>
+					<a href="./parti"><li>parti</li></a>
+				</ul>
+			</div>
+
+			</div>
+        </header>
+        {% block javascripts %}
+			{{ encore_entry_script_tags('app') }}
+
+			<!-- Renders app.js & a webpack runtime.js file
+			                <script src="/build/runtime.js"></script>
+			                <script src="/build/app.js"></script> -->
+		{% endblock %}
+		{% block body %}{% endblock %}
+		
+	</body>
+	<footer></footer>
+</html>

@@ -1,0 +1,22 @@
+#pretty-parite{
+    width: 100%;
+}
+
+h6.parite{
+    display: inline-block;
+    width:auto;
+    height: auto;
+    
+}
+
+#container-parite{
+    width: 70%;
+    height: 10%;
+    background-color: deeppink;
+    display: inline-block;
+}
+#parite{
+    text-align: center;
+    height: inherit;
+    background-color: cadetblue;
+}

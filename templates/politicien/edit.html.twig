@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Politicien{% endblock %}
+
+{% block body %}
+    <h1>Edit Politicien</h1>
+
+    {{ include('politicien/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('politicien_index') }}">back to list</a>
+
+    {{ include('politicien/_delete_form.html.twig') }}
+{% endblock %}

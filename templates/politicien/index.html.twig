@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Politicien index{% endblock %}
+
+{% block body %}
+    <h1>Politicien index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Sexe</th>
+                <th>Age</th>
+                <th>affaires</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for politicien in politiciens %}
+            <tr>
+                <td>{{ politicien.id }}</td>
+                <td>{{ politicien.nom }}</td>
+                <td>{{ politicien.sexe }}</td>
+                <td>{{ politicien.age }}</td>
+                <td>
+                {% for affaire in politicien.affaires %}
+                    <div>{{ affaire.designation }}</div>
+                {% endfor %}
+                </td>
+
+
+                <td>
+                    <a href="{{ path('politicien_show', {'id': politicien.id}) }}">show</a>
+                    <a href="{{ path('politicien_edit', {'id': politicien.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('politicien_new') }}">Create new</a>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Politicien
+{% endblock %}
+
+{% block body %}
+	<h1>Create new Politicien</h1>
+
+	{{ include('politicien/_form.html.twig') }}
+
+	<a href="{{ path('politicien_index') }}">back to list</a>
+	<script>
+/*
+function isSelected(self) {
+if (this.selected == true) {
+this.selected = false;
+console.log('false');
+}
+console.log(self)
+}
+
+$MyOptions = document.querySelectorAll('select[multiple="multiple"] option')
+$MyOptions.forEach(element => {
+
+
+element.addEventListener('click', function isSelected(event) {
+if (this.selected == true) {
+this.selected = false;
+console.log('false');
+}
+console.log(this)
+});
+
+
+});*/
+	</script>
+{% endblock %}

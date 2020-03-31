@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Parti{% endblock %}
+
+{% block body %}
+    <h1>Parti</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ parti.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ parti.nom }}</td>
+            </tr>
+            <tr>
+                <th>Politiciens</th>
+                <td>
+                    
+                        {% for politicien in parti.politiciens %}
+                            <div>{{ politicien.nom }}</div>
+                        {% endfor %}
+                        
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('parti_index') }}">back to list</a>
+
+    <a href="{{ path('parti_edit', {'id': parti.id}) }}">edit</a>
+
+    {{ include('parti/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Affaire index{% endblock %}
+
+{% block body %}
+    <h1>Affaire index</h1>
+    {{ include('affaire/_form.html.twig') }}
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Designation</th>
+                <th>Politiciens</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for affaire in affaires %}
+            <tr>
+                <td>{{ affaire.id }}</td>
+                <td>{{ affaire.designation }}</td>
+                <td>
+                    {% for politicien in affaire.politicien %}
+                        <div>{{ politicien.nom }}</div>
+                    {% endfor %}
+                    </td>
+                <td>
+                    <a href="{{ path('affaire_show', {'id': affaire.id}) }}">show</a>
+                    <a href="{{ path('affaire_edit', {'id': affaire.id}) }}">edit</a>
+                </td>
+
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('affaire_new') }}">Create new</a>
+    <script>
+       /* $('#affaire_search').autocomplete({
+    source: function(request,response){
+        return $.ajax(
+            {
+                type:"POST",
+                url:'./getAffaire',
+                dataType: "jsonp",
+                data: {"designation": request.term},
+                success: function(result){
+                    response(result)
+                    
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    alert(xhr.status);
+                    alert(thrownError);
+                  }
+            }
+        )
+    },
+    minLength: 3,
+      select: function( event, ui ) {
+        log( ui.item ?
+          "Selected: " + ui.item.label :
+          "Nothing selected, input was " + this.value);
+      },
+      open: function() {
+        $( this ).removeClass( "ui-corner-all" ).addClass( "ui-corner-top" );
+      },
+      close: function() {
+        $( this ).removeClass( "ui-corner-top" ).addClass( "ui-corner-all" );
+      }
+
+})    */
+    </script>
+    {% block javascripts %}
+			{{ encore_entry_script_tags('affaire_index') }}
+
+			<!-- Renders app.js & a webpack runtime.js file
+			                <script src="/build/runtime.js"></script>
+			                <script src="/build/app.js"></script> -->
+		{% endblock %}
+{% endblock %}
